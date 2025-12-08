@@ -101,7 +101,7 @@ else:
     SAVE_PREDS = False #Don't save predictions for hyperparam search mode
     hyperparams = {
         "lr" : [0.01, 0.001, 0.0001],
-        #"weight_decay" : [0.1, 0.01, 0.001],
+        "weight_decay" : [0.1, 0.01, 0.001],
         "p_dropout" : [0.1, 0.3, 0.5],
         "layers" : [1, 3, 8],
         "n_MC_inference" : [50, 200, 500]

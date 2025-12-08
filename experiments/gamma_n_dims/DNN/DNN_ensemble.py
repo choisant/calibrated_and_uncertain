@@ -71,8 +71,8 @@ if VARY_HYPERPARAMS == False:
 else:
     n_runs = 1
     SAVE_PREDS = False #Don't save predictions for hyperparam search mode
-    VARY_LAYERS = True
-    if VARY_LAYERS:
+    VARY_N_ENSEMBLES = False
+    if VARY_N_ENSEMBLES:
         hyperparams = {
             "lr" : [0.001],
             "weight_decay" : [0.01],
@@ -83,8 +83,7 @@ else:
         hyperparams = {
             "lr" : [0.01, 0.001, 0.0001],
             "weight_decay" : [0.1, 0.01, 0.001],
-            "layers" : [1, 3, 8],
-            "n_ensembles" : [5, 20, 50]
+            "layers" : [1, 3, 8]
         }
 
     n_data = [250, 1000, 5000]
@@ -380,8 +379,8 @@ else:
                         os.mkdir(f"gridsearch/{trainfile}")
                     if (not os.path.isdir(f"gridsearch/{trainfile}/{ALGORITHM_NAME}") ):
                         os.mkdir(f"gridsearch/{trainfile}/{ALGORITHM_NAME}")
-                    if VARY_LAYERS:
-                        df_run.to_csv(f"gridsearch/{trainfile}/{ALGORITHM_NAME}/results_run{j}_vary_n_layers_{ACTIVATION}_ntrain_{n_train}.csv")
+                    if VARY_N_ENSEMBLES:
+                        df_run.to_csv(f"gridsearch/{trainfile}/{ALGORITHM_NAME}/results_run{j}_vary_n_ensembles_{ACTIVATION}_ntrain_{n_train}.csv")
                     else:
                         df_run.to_csv(f"gridsearch/{trainfile}/{ALGORITHM_NAME}/results_run{j}_{ACTIVATION}_ntrain_{n_train}.csv")
                     i = i + 1
